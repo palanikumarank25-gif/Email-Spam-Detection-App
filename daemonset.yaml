@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+
+kind: DaemonSet
+
+metadata:
+  name: simple-daemonset
+spec:
+  selector:
+    matchLabels:
+      app: simple-app
+  template:
+    metadata:
+      labels:
+        app: simple-app
+    spec:
+      containers:
+      - name: simple-container
+        image: palanikumaran/spam_prediction:latest
