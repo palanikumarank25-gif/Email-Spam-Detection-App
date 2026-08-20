@@ -1,7 +1,7 @@
 
 FROM python:3.9
 
-WORKDIR / spam_prediction
+WORKDIR /spam_prediction
 
 COPY requirements.txt . 
 RUN pip install -r requirements.txt
