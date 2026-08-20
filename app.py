@@ -2,17 +2,23 @@ import streamlit as st
 import pickle
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
-from win32com.client import Dispatch
-import pythoncom 
-import pandas as pd
+import sys 
+
+if sys.platform == "win32":
+    from win32com.client import Dispatch
+    import pythoncom
+
+import pandas as pd 
 
 st.set_page_config(page_title="Spam Detection App", layout="centered") 
 
-def speak(text): 
-        pythoncom.CoInitialize()
-        speak = Dispatch("SAPI.SpVoice")
-        speak.Speak(text)
-        pythoncom.CoUninitialize()
+def speak(text):
+    if sys.platform != "win32":
+        return
+    pythoncom.CoInitialize()
+    speak = Dispatch("SAPI.SpVoice")
+    speak.Speak(text)
+    pythoncom.CoUninitialize()
 
 model = pickle.load(open('spam.pkl','rb'))
 cv = pickle.load(open('vectorizer.pkl','rb'))
