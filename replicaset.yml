@@ -1,24 +1,26 @@
 apiVersion: apps/v1
-
 kind: ReplicaSet
 
 metadata:
   name: spam-prediction-rs
   labels:
-    app: spam-prediction 
-    
+    app: spam-prediction
+
 spec:
   replicas: 10
+
   selector:
     matchLabels:
       app: spam-prediction
+
   template:
     metadata:
       labels:
         app: spam-prediction
+
     spec:
       containers:
-      - name: spam-prediction-container
-        image: palanikumaran/spam_prediction:latest
-        ports:
-        - containerPort: 8501
+        - name: spam-prediction-container
+          image: palanikumaran/email-spam-detection-app:latest
+          ports:
+            - containerPort: 8501
