@@ -1,5 +1,4 @@
 apiVersion: v1
-
 kind: Pod
 
 metadata:
@@ -10,6 +9,7 @@ metadata:
 spec:
   containers:
     - name: spam-prediction-container
-      image: palanikumaran/spam_prediction:latest
+      image: palanikumaran/email-spam-detection-app:latest
       ports:
         - containerPort: 8501
+
