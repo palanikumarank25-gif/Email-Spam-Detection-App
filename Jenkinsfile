@@ -45,8 +45,8 @@ pipeline {
 
         stage('Deploy to Kubernetes') { 
             steps { 
-                bat 'kubectl apply -f deployment.yml --validate=false'
-                bat 'kubectl apply -f service.yml --validate=false'
+                bat 'set KUBECONFIG=C:\\Users\\Gaming\\.kube\\config && kubectl config current-context'
+                bat 'set KUBECONFIG=C:\\Users\\Gaming\\.kube\\config && kubectl get nodes'
             }
         }
     }
