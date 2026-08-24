@@ -45,8 +45,10 @@ pipeline {
 
         stage('Deploy to Kubernetes') { 
             steps { 
-                bat 'set KUBECONFIG=C:\\Users\\Gaming\\.kube\\config && kubectl config current-context'
-                bat 'set KUBECONFIG=C:\\Users\\Gaming\\.kube\\config && kubectl get nodes'
+                bat 'set KUBECONFIG=C:\\Users\\Gaming\\.kube\\config && kubectl apply -f deployment.yml'
+                bat 'set KUBECONFIG=C:\\Users\\Gaming\\.kube\\config && kubectl apply -f service.yml'
+                bat 'set KUBECONFIG=C:\\Users\\Gaming\\.kube\\config && kubectl get pods'
+                bat 'set KUBECONFIG=C:\\Users\\Gaming\\.kube\\config && kubectl get services'
             }
         }
     }
