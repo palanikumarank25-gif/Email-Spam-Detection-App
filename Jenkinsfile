@@ -41,6 +41,13 @@ pipeline {
                 bat 'docker rm email-spam-container || exit 0'
                 bat 'docker run -d -p 8502:8501 --name email-spam-container email-spam-detection-app'
             }
+        }  
+
+        stage('Deploy to Kubernetes') { 
+            steps { 
+                bat 'kubectl apply -f deployment.yml'
+                bat 'kubectl apply -f service.yml'
+            }
         }
     }
 
